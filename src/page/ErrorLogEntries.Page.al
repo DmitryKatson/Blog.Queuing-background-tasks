@@ -1,10 +1,12 @@
 page 50101 "AIR Error Log Entries"
 {
-    Caption = 'Emydex Error Log Entries';
+    Caption = 'My Error Log Entries';
     PageType = List;
     SourceTable = "AIR Error Log Entry";
     SourceTableView = order(descending);
     Editable = false;
+    UsageCategory = History;
+    ApplicationArea = all;
 
     layout
     {

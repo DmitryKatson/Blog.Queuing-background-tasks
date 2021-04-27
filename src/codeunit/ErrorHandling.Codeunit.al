@@ -10,10 +10,10 @@ codeunit 50101 "AIR Error Handling"
 
     procedure LogError(var MyItemEntity: Record "AIR MyItemEntity")
     var
-        EmydexErrorLogEntry: Record "AIR Error Log Entry";
+        ErrorLogEntry: Record "AIR Error Log Entry";
         RecRef: RecordRef;
     begin
         RecRef.GetTable(MyItemEntity);
-        EmydexErrorLogEntry.LogError(MyItemEntity.SystemId);
+        ErrorLogEntry.LogError(MyItemEntity.SystemId);
     end;
 }

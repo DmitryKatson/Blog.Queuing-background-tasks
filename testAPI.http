@@ -11,3 +11,40 @@ Content-Type: application/json
 {
     "description": "Super Item 1"
 }
+
+###
+// create items in a batch
+POST {{hostname}}/api/DmitryKatson/myItems/v1.0/$batch
+Authorization: Basic {{userName}}:{{password}}
+Content-Type: application/json
+
+{
+    "requests": [
+        {
+            "method": "POST",
+            "id": "o1",
+            "url": "companies({{companyId}})/myItems",
+            "headers": {
+                "Content-Type": "application/json",
+                "Prefer": "return-no-content"
+            },
+            "body":
+            {
+                "description": "Super Item 2"
+            }
+        },
+        {
+            "method": "POST",
+            "id": "o2",
+            "url": "companies({{companyId}})/myItems",
+            "headers": {
+                "Content-Type": "application/json",
+                "Prefer": "return-no-content"
+            },
+            "body":
+            {
+                "description": "Super Item 3"
+            }
+        }
+    ]
+}
