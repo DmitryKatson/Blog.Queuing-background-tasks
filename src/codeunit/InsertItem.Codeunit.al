@@ -6,8 +6,7 @@ codeunit 50100 "AIR InsertItem"
     var
         Item: Record Item;
     begin
-        Item.LockTable(false);
-        Sleep(10000);
+        SimulateHardWorkThatLocksTheItem();
 
         Item.Insert(true);
 
@@ -15,8 +14,19 @@ codeunit 50100 "AIR InsertItem"
         Item.Modify(true);
 
         Rec.Delete();
+    end;
 
-        Item.LockTable(false);
-        Sleep(10000);
+    local procedure SimulateHardWorkThatLocksTheItem()
+    var
+        Item: Record Item;
+    begin
+        Item.LockTable();
+        if Item.FindFirst() then
+            Sleep(15000);
+
+        if Item.FindSet() then
+            repeat
+
+            until Item.Next() = 0;
     end;
 }

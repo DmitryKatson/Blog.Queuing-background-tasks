@@ -31,4 +31,19 @@ page 50101 "AIR Error Log Entries"
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action("Reset")
+            {
+                ApplicationArea = all;
+                Image = Delete;
+                trigger OnAction()
+                begin
+                    Rec.DeleteAll();
+                end;
+            }
+        }
+    }
 }
