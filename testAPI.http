@@ -30,7 +30,7 @@ Content-Type: application/json
             },
             "body":
             {
-                "description": "Super Item 2"
+                "description": "Super Item 4"
             }
         },
         {
@@ -43,7 +43,7 @@ Content-Type: application/json
             },
             "body":
             {
-                "description": "Super Item 3"
+                "description": "Super Item 5"
             }
         }
     ]

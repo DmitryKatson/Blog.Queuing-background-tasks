@@ -14,7 +14,23 @@ codeunit 50100 "AIR InsertItem"
         Item.Modify(true);
 
         Rec.Delete();
+
+        FindNextBackgroundTaskAndMarkAsReady();
     end;
+
+    local procedure FindNextBackgroundTaskAndMarkAsReady();
+    var
+        ScheduledTask: Record "Scheduled Task";
+    begin
+        ScheduledTask.SetRange(Company, CompanyName);
+        ScheduledTask.SetRange("Run Codeunit", Codeunit::"AIR InsertItem");
+        ScheduledTask.SetRange("Is Ready", false);
+        if not ScheduledTask.FindFirst() then
+            exit;
+
+        TaskScheduler.SetTaskReady(ScheduledTask.ID);
+    end;
+
 
     local procedure SimulateHardWorkThatLocksTheItem()
     var
