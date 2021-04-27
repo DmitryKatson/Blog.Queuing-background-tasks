@@ -3,11 +3,11 @@ page 50100 "AIR MyItemEntity"
     PageType = API;
     Caption = 'MyItemEntity';
     APIPublisher = 'DmitryKatson';
-    APIGroup = 'DmitryKatson';
+    APIGroup = 'myItems';
     APIVersion = 'v1.0';
     EntityName = 'myItem';
     EntitySetName = 'myItems';
-    SourceTable = "AIR MyItemEntity";
+    SourceTable = Item;
     DelayedInsert = true;
 
     layout
@@ -22,11 +22,15 @@ page 50100 "AIR MyItemEntity"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        Rec.Insert(true);
-
-        if TaskScheduler.CanCreateTask() then
-            TaskScheduler.CreateTask(Codeunit::"AIR InsertItem", 0, true, CompanyName, 0DT, Rec.RecordId);
-
+        DoInsertItemInRelaxMode();
         exit(false);
+    end;
+
+    local procedure DoInsertItemInRelaxMode()
+    begin
+        Rec.LockTable();
+        Sleep(1000);
+
+        Rec.Insert(true);
     end;
 }
