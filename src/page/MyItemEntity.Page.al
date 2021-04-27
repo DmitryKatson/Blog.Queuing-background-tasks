@@ -3,7 +3,7 @@ page 50100 "AIR MyItemEntity"
     PageType = API;
     Caption = 'MyItemEntity';
     APIPublisher = 'DmitryKatson';
-    APIGroup = 'DmitryKatson';
+    APIGroup = 'myItems';
     APIVersion = 'v1.0';
     EntityName = 'myItem';
     EntitySetName = 'myItems';

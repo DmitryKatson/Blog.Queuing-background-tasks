@@ -1,0 +1,13 @@
+@hostname = https://api.businesscentral.dynamics.com/v2.0/c4f3bcf1-a4f8-449e-bdc3-582c4d5045c1/SandboxUS
+@userName = ADMIN.PREM
+@password = AJ1Zj0dYlhrCRwCieN+H6mhoIwoo0NdDrPD0Vdp4L/o=
+@companyId = f53e0828-3d8a-eb11-bb5f-000d3a398a56
+
+###
+POST  {{hostname}}/api/DmitryKatson/myItems/v1.0/companies({{companyId}})/myItems
+Authorization: Basic {{userName}}:{{password}}
+Content-Type: application/json
+
+{
+    "description": "Super Item 1"
+}
