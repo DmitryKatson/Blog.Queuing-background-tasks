@@ -22,10 +22,10 @@ page 50100 "AIR MyItemEntity"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        Rec.Insert(true);
+        Rec.Insert(true); //save request to the staging table
 
-        if TaskScheduler.CanCreateTask() then
-            TaskScheduler.CreateTask(Codeunit::"AIR InsertItem", 0, true, CompanyName, 0DT, Rec.RecordId);
+        if TaskScheduler.CanCreateTask() then //run background task to create item
+            TaskScheduler.CreateTask(Codeunit::"AIR InsertItem", Codeunit::"AIR Error Handling", true, CompanyName, 0DT, Rec.RecordId);
 
         exit(false);
     end;
